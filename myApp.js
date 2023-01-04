@@ -29,17 +29,10 @@ newPerson
     console.error(err);
   });
 
-const arrayOfPeople = [
-  {
-    name: "Zakir Nawi",
-    age: 20,
-    favoriteFoods: ["Ayam Goreng", "Bakso"],
-  },
-  {
-    name: "Fauzan",
-    age: 23,
-    favoriteFoods: ["Bakso"],
-  },
+let arrayOfPeople = [
+  { name: "Frankie", age: 74, favoriteFoods: ["Del Taco"] },
+  { name: "Sol", age: 76, favoriteFoods: ["roast chicken"] },
+  { name: "Robert", age: 78, favoriteFoods: ["wine"] },
 ];
 
 const createAndSavePerson = (done) => {
@@ -47,9 +40,9 @@ const createAndSavePerson = (done) => {
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
-  Person.create(arrayOfPeople).then((result) => {
-    console.log(result);
-    done(null, result);
+  Person.create(arrayOfPeople, function (err, people) {
+    if (err) return console.log(err);
+    done(null, people);
   });
 };
 
